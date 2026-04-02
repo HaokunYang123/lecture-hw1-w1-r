@@ -18,7 +18,7 @@ initial begin
     // Set up output to VCDD file
     $dumpfile("tb.vcd");
     $dumpvars(0, testbench);
-
+    pass = 1'b1; // init signal
     // Initialize testbench variables
 end
 
@@ -38,7 +38,7 @@ task test_01();
         A = 0;
         B = 1;
         #5;
-        pass &= S == 0 & C == 1;
+        pass &= S == 1 & C == 0;
     end
 endtask
 
@@ -48,7 +48,7 @@ task test_10();
         A = 1;
         B = 0;
         #5;
-        pass &= S == 0 & C == 1;
+        pass &= S == 1 & C == 0;
     end
 endtask
 
@@ -58,7 +58,7 @@ task test_11 ();
         A = 1;
         B = 1;
         #5;
-        pass &= S == 1 & C == 0;
+        pass &= S == 0 & C == 1;
     end
 endtask
 
